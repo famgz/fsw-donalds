@@ -1,8 +1,9 @@
 import { ConsumptionMethod } from '@prisma/client';
 import { notFound } from 'next/navigation';
 
+import RestaurantCategories from '@/app/[slug]/menu/components/categories';
 import RestaurantHeader from '@/app/[slug]/menu/components/header';
-import { getRestaurantBySlug } from '@/services/resturant';
+import { getRestaurantBySlugWithMenuCategoriesAndProducts } from '@/services/resturant';
 
 interface Props {
   params: ParamsProps;
@@ -27,13 +28,15 @@ export default async function RestaurantMenuPage({
   if (!slug || !isConsumptionMethodValid(consumptionMethod)) {
     return notFound();
   }
-  const restaurant = await getRestaurantBySlug(slug);
+  const restaurant =
+    await getRestaurantBySlugWithMenuCategoriesAndProducts(slug);
   if (!restaurant) {
     return notFound();
   }
   return (
     <div>
       <RestaurantHeader coverImageUrl={restaurant.coverImageUrl} />
+      <RestaurantCategories restaurant={restaurant} />
     </div>
   );
 }
