@@ -36,14 +36,18 @@ export default async function RestaurantPage({ params }: Props) {
       </div>
       <div className="grid grid-cols-2 gap-4 pt-14">
         <ConsumptionMethodCard
-          imageSrc="/dine_in.png"
-          imageAlt="Imagem hamburguer"
+          slug={slug}
           buttonText="Para comer aqui"
+          imageAlt="Imagem hamburguer"
+          imageSrc="/dine_in.png"
+          option="DINE_IN"
         />
         <ConsumptionMethodCard
-          imageSrc="/takeaway.png"
-          imageAlt="Imagem sacola"
+          slug={slug}
           buttonText="Para levar"
+          imageAlt="Imagem sacola"
+          imageSrc="/takeaway.png"
+          option="TAKEAWAY"
         />
       </div>
     </div>

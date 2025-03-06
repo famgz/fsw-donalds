@@ -78,3 +78,5 @@ https://www.youtube.com/watch?v=o6ziU63mDyw
   "plugin": ["prettier-plugin-tailwindcss"]
 }
 ```
+
+`npm install --save-dev --save-exact prettier`
