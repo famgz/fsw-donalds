@@ -52,6 +52,8 @@ https://www.youtube.com/watch?v=o6ziU63mDyw
 
 `npx shadcn@latest add button`
 
+`npx shadcn@latest add card`
+
 
 ## ESlint
 
