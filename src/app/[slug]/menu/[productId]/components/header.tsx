@@ -10,7 +10,7 @@ interface Props {
 
 export default function ProductHeader({ product }: Props) {
   return (
-    <div className="relative flex h-80 w-full justify-between p-3">
+    <div className="relative flex min-h-80 w-full justify-between p-3">
       <BackButton />
       <OrdersButton />
       <Image

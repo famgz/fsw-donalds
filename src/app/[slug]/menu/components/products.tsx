@@ -11,12 +11,12 @@ interface Props {
 
 export default function Products({ slug, products }: Props) {
   return (
-    <div className="space-y-3 px-5 py-3">
+    <div className="divide-y px-5 py-3">
       {products.map((product) => (
         <Link
           href={`/${slug}/menu/${product.id}`}
           key={product.id}
-          className="flex items-center justify-between gap-4 border-b py-4"
+          className="flex items-center justify-between gap-4 py-4"
         >
           <div>
             <h3 className="text-sm font-medium">{product.name}</h3>
