@@ -21,7 +21,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${font.className} antialiased`}>
-        <div className="mx-auto min-h-screen max-w-md">{children}</div>
+        <div className="mx-auto flex min-h-screen max-w-md flex-col">
+          {children}
+        </div>
       </body>
     </html>
   );
