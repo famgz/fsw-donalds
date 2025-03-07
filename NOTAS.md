@@ -56,6 +56,8 @@ https://www.youtube.com/watch?v=o6ziU63mDyw
 
 `npx shadcn@latest add scroll-area`
 
+`npx shadcn@latest add sheet`
+
 
 ## ESlint
 

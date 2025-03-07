@@ -3,6 +3,9 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
 
+import Cart from '@/components/cart';
+import { CartProvider } from '@/context/cart';
+
 export const metadata: Metadata = {
   title: 'FSW Donalds',
   description: 'Fast Food App',
@@ -21,9 +24,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${font.className} antialiased`}>
-        <div className="mx-auto flex min-h-screen max-w-md flex-col">
-          {children}
-        </div>
+        <CartProvider>
+          <Cart />
+          <div className="mx-auto flex min-h-screen max-w-md flex-col">
+            {children}
+          </div>
+        </CartProvider>
       </body>
     </html>
   );

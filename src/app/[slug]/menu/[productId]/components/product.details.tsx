@@ -3,10 +3,11 @@
 import { Product, Restaurant } from '@prisma/client';
 import { ChefHatIcon, ChevronLeftIcon, ChevronRightIcon } from 'lucide-react';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 
 import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
+import { CartContext } from '@/context/cart';
 import { formatPrice } from '@/lib/utils';
 
 interface Props {
@@ -16,6 +17,7 @@ interface Props {
 
 export default function ProductDetails({ restaurant, product }: Props) {
   const [quantity, setQuantity] = useState(1);
+  const { toggleCart } = useContext(CartContext);
 
   function handleIncreaseQuantity() {
     setQuantity((prev) => prev + 1);
@@ -24,6 +26,10 @@ export default function ProductDetails({ restaurant, product }: Props) {
   function handleDecreaseQuantity() {
     if (quantity <= 1) return;
     setQuantity((prev) => prev - 1);
+  }
+
+  function handleAddToCart() {
+    toggleCart();
   }
 
   return (
@@ -85,7 +91,9 @@ export default function ProductDetails({ restaurant, product }: Props) {
           </div>
         )}
       </ScrollArea>
-      <Button className="mt-6 w-full rounded-full">Adicionar à sacola</Button>
+      <Button className="mt-6 w-full rounded-full" onClick={handleAddToCart}>
+        Adicionar à sacola
+      </Button>
     </div>
   );
 }
