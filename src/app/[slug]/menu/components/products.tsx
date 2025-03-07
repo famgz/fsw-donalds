@@ -5,15 +5,16 @@ import Link from 'next/link';
 import { formatPrice } from '@/lib/utils';
 
 interface Props {
+  slug: string;
   products: Product[];
 }
 
-export default function Products({ products }: Props) {
+export default function Products({ slug, products }: Props) {
   return (
     <div className="space-y-3 px-5 py-3">
       {products.map((product) => (
         <Link
-          href={'/'}
+          href={`/${slug}/menu/${product.id}`}
           key={product.id}
           className="flex items-center justify-between gap-4 border-b py-4"
         >

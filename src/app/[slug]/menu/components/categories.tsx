@@ -65,7 +65,7 @@ export default function RestaurantCategories({ restaurant }: Props) {
         <ScrollBar orientation="horizontal" />
       </ScrollArea>
       <h3 className="px-5 pt-2 font-semibold">{selectedCategory.name}</h3>
-      <Products products={selectedCategory.products} />
+      <Products slug={restaurant.slug} products={selectedCategory.products} />
     </div>
   );
 }
