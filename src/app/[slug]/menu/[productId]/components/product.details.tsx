@@ -17,7 +17,7 @@ interface Props {
 
 export default function ProductDetails({ restaurant, product }: Props) {
   const [quantity, setQuantity] = useState(1);
-  const { toggleCart } = useContext(CartContext);
+  const { toggleCart, addProduct } = useContext(CartContext);
 
   function handleIncreaseQuantity() {
     setQuantity((prev) => prev + 1);
@@ -29,6 +29,7 @@ export default function ProductDetails({ restaurant, product }: Props) {
   }
 
   function handleAddToCart() {
+    addProduct({ ...product, quantity });
     toggleCart();
   }
 
