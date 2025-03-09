@@ -81,7 +81,7 @@ export default function ProductDetails({ restaurant, product }: Props) {
         )}
       </ScrollArea>
       <Button className="mt-6 w-full rounded-full" onClick={handleAddToCart}>
-        Adicionar à sacola
+        Adicionar ao carrinho
       </Button>
     </div>
   );

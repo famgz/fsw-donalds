@@ -27,9 +27,15 @@ export default function Cart() {
         </SheetHeader>
         <ScrollArea className="h-20 flex-auto">
           <div className="flex flex-col gap-3">
-            {products.map((product) => (
-              <CartProductItem product={product} key={product.id} />
-            ))}
+            {products.length > 0 ? (
+              products.map((product) => (
+                <CartProductItem product={product} key={product.id} />
+              ))
+            ) : (
+              <p className="py-10 text-center text-sm text-muted-foreground">
+                O carrinho está vazio
+              </p>
+            )}
           </div>
         </ScrollArea>
       </SheetContent>
