@@ -2,6 +2,8 @@
 
 import { useContext } from 'react';
 
+import CartProductItem from '@/components/cart-product-item';
+import { ScrollArea } from '@/components/ui/scroll-area';
 import {
   Sheet,
   SheetContent,
@@ -16,20 +18,20 @@ export default function Cart() {
 
   return (
     <Sheet open={isOpen} onOpenChange={toggleCart}>
-      <SheetContent>
+      <SheetContent className="flex w-[90%] flex-col gap-5">
         <SheetHeader>
-          <SheetTitle>Carrinho</SheetTitle>
+          <SheetTitle className="text-left">Carrinho</SheetTitle>
           <SheetDescription className="sr-only">
             Carrinho de compras
           </SheetDescription>
         </SheetHeader>
-        {products.map((product) => (
-          <div key={product.id}>
-            <h2>
-              {product.name} - {product.quantity}
-            </h2>
+        <ScrollArea className="h-20 flex-auto">
+          <div className="flex flex-col gap-3">
+            {products.map((product) => (
+              <CartProductItem product={product} key={product.id} />
+            ))}
           </div>
-        ))}
+        </ScrollArea>
       </SheetContent>
     </Sheet>
   );

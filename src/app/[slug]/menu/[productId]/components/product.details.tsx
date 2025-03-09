@@ -1,10 +1,11 @@
 'use client';
 
 import { Product, Restaurant } from '@prisma/client';
-import { ChefHatIcon, ChevronLeftIcon, ChevronRightIcon } from 'lucide-react';
+import { ChefHatIcon } from 'lucide-react';
 import Image from 'next/image';
 import { useContext, useState } from 'react';
 
+import ProductQuantityControls from '@/components/product-quantity-controls';
 import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { CartContext } from '@/context/cart';
@@ -52,24 +53,11 @@ export default function ProductDetails({ restaurant, product }: Props) {
         <h3 className="text-xl font-semibold">
           {formatPrice(product.priceInCents)}
         </h3>
-        <div className="flex items-center gap-3 text-center">
-          <Button
-            variant={'outline'}
-            className="size-8 rounded-xl"
-            onClick={handleDecreaseQuantity}
-            disabled={quantity <= 1}
-          >
-            <ChevronLeftIcon />
-          </Button>
-          <span className="inline-block w-5 text-lg">{quantity}</span>
-          <Button
-            variant={'destructive'}
-            className="size-8 rounded-xl"
-            onClick={handleIncreaseQuantity}
-          >
-            <ChevronRightIcon />
-          </Button>
-        </div>
+        <ProductQuantityControls
+          quantity={quantity}
+          handleDecreaseQuantity={handleDecreaseQuantity}
+          handleIncreaseQuantity={handleIncreaseQuantity}
+        />
       </div>
       <ScrollArea className="h-10 flex-auto">
         <div className="mt-6 space-y-3">
