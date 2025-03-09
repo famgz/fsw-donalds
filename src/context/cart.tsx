@@ -27,7 +27,17 @@ export function CartProvider({ children }: { children: ReactNode }) {
   }
 
   function addProduct(product: CartProduct) {
-    setProducts((prev) => [...prev, product]);
+    setProducts((prev) => {
+      const productOnCartIndex = prev.findIndex((p) => p.id === product.id);
+      const isProductOnCart = productOnCartIndex !== -1;
+      if (isProductOnCart) {
+        const newProducts = [...prev];
+        newProducts[productOnCartIndex].quantity += product.quantity;
+        return newProducts;
+      } else {
+        return [...prev, product];
+      }
+    });
   }
 
   return (
