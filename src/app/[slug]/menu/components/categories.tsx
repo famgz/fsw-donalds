@@ -29,7 +29,7 @@ export default function RestaurantCategories({ restaurant }: Props) {
   }
 
   return (
-    <div className="relative -mt-5 rounded-t-3xl border bg-white">
+    <div className="relative -mt-5 rounded-t-3xl border bg-white shadow-lg">
       <div className="flex flex-col p-5">
         <div className="flex items-center gap-3">
           <Image

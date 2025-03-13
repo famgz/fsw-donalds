@@ -10,14 +10,16 @@ interface Props {
 
 export default function ProductHeader({ product }: Props) {
   return (
-    <div className="relative flex min-h-80 w-full justify-between p-3">
-      <BackButton />
-      <OrdersButton />
+    <div className="relative min-h-80 w-full">
+      <div className="relative z-50 flex justify-between p-3">
+        <BackButton />
+        <OrdersButton />
+      </div>
       <Image
         fill
         src={product.imageUrl}
         alt={product.name}
-        className="absolute -z-10 object-cover"
+        className="absolute object-cover"
       />
     </div>
   );

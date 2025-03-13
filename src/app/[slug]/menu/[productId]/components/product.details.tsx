@@ -35,7 +35,7 @@ export default function ProductDetails({ restaurant, product }: Props) {
   }
 
   return (
-    <div className="-mt-4 flex flex-auto flex-col overflow-hidden rounded-t-3xl bg-white p-5">
+    <div className="-mt-4 flex flex-auto flex-col overflow-hidden rounded-t-3xl bg-white p-5 shadow-lg">
       <div className="flex items-center gap-1.5">
         <Image
           src={restaurant.avatarImageUrl}
