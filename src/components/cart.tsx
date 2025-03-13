@@ -3,7 +3,7 @@
 import { useContext } from 'react';
 
 import CartProductItem from '@/components/cart-product-item';
-import { Button } from '@/components/ui/button';
+import CheckoutButton from '@/components/checkout-button';
 import { Card, CardContent } from '@/components/ui/card';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import {
@@ -48,13 +48,9 @@ export default function Cart() {
               <p className="text-sm text-muted-foreground">Total:</p>
               <p className="font-semibold">{formatPrice(totalInCents)}</p>
             </div>
-            <div className="flex justify-between">
-              <p>Total:</p>
-              <p>{formatPrice(totalInCents)}</p>
-            </div>
           </CardContent>
         </Card>
-        <Button className="w-full rounded-full">Finalizar Pedido</Button>
+        <CheckoutButton />
       </SheetContent>
     </Sheet>
   );

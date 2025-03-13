@@ -58,6 +58,12 @@ https://www.youtube.com/watch?v=o6ziU63mDyw
 
 `npx shadcn@latest add sheet`
 
+`npx shadcn@latest add drawer`
+
+`npx shadcn@latest add form`
+
+`npx shadcn@latest add input`
+
 
 ## ESlint
 
@@ -84,3 +90,9 @@ https://www.youtube.com/watch?v=o6ziU63mDyw
 ```
 
 `npm install --save-dev --save-exact prettier`
+
+
+
+## Form
+
+`npm i react-number-format`
