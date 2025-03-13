@@ -10,7 +10,7 @@ interface Props {
 
 export default function ProductHeader({ product }: Props) {
   return (
-    <div className="relative min-h-80 w-full">
+    <div className="relative min-h-80 w-full bg-muted-foreground/5">
       <div className="relative z-50 flex justify-between p-3">
         <BackButton />
         <OrdersButton />
