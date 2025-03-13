@@ -1,12 +1,13 @@
 'use client';
 
-import { createContext, ReactNode, useState } from 'react';
+import { createContext, ReactNode, useMemo, useState } from 'react';
 
 import { CartProduct } from '@/types/cart';
 
 export interface ICartContext {
   isOpen: boolean;
   products: CartProduct[];
+  totalInCents: number;
   toggleCart: () => void;
   addProduct: (product: CartProduct) => void;
   removeProduct: (productId: string) => void;
@@ -17,6 +18,7 @@ export interface ICartContext {
 export const CartContext = createContext<ICartContext>({
   isOpen: false,
   products: [],
+  totalInCents: 0,
   toggleCart: () => {},
   addProduct: () => {},
   removeProduct: () => {},
@@ -27,6 +29,14 @@ export const CartContext = createContext<ICartContext>({
 export function CartProvider({ children }: { children: ReactNode }) {
   const [products, setProducts] = useState<CartProduct[]>([]);
   const [isOpen, setIsOpen] = useState(false);
+  const totalInCents = useMemo(
+    () =>
+      products.reduce(
+        (acc, product) => acc + product.quantity * product.priceInCents,
+        0,
+      ),
+    [products],
+  );
 
   function toggleCart() {
     setIsOpen((prev) => !prev);
@@ -85,6 +95,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
         removeProduct,
         decreaseProductQuantity,
         increaseProductQuantity,
+        totalInCents,
       }}
     >
       {children}

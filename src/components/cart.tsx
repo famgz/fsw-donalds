@@ -3,6 +3,8 @@
 import { useContext } from 'react';
 
 import CartProductItem from '@/components/cart-product-item';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import {
   Sheet,
@@ -12,9 +14,11 @@ import {
   SheetTitle,
 } from '@/components/ui/sheet';
 import { CartContext } from '@/context/cart';
+import { formatPrice } from '@/lib/utils';
 
 export default function Cart() {
-  const { isOpen, toggleCart, products } = useContext(CartContext);
+  const { isOpen, toggleCart, products, totalInCents } =
+    useContext(CartContext);
 
   return (
     <Sheet open={isOpen} onOpenChange={toggleCart}>
@@ -38,6 +42,19 @@ export default function Cart() {
             )}
           </div>
         </ScrollArea>
+        <Card>
+          <CardContent className="p-5 text-sm">
+            <div className="flex justify-between">
+              <p className="text-sm text-muted-foreground">Total:</p>
+              <p className="font-semibold">{formatPrice(totalInCents)}</p>
+            </div>
+            <div className="flex justify-between">
+              <p>Total:</p>
+              <p>{formatPrice(totalInCents)}</p>
+            </div>
+          </CardContent>
+        </Card>
+        <Button className="w-full rounded-full">Finalizar Pedido</Button>
       </SheetContent>
     </Sheet>
   );
