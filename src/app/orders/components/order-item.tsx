@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 import OrderStatusBadge from '@/app/orders/components/order-status-badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { formatPrice } from '@/lib/utils';
+import { formatDate, formatPrice } from '@/lib/utils';
 import { OrderWithProductsAndRestaurant } from '@/types/order';
 
 interface Props {
@@ -14,7 +14,12 @@ export default function OrderItem({ order }: Props) {
     <Card>
       <CardHeader>
         <CardTitle className="space-y-4">
-          <OrderStatusBadge orderStatus={order.status} />
+          <div className="flex items-center justify-between">
+            <OrderStatusBadge orderStatus={order.status} />
+            <span className="text-xs font-light">
+              {formatDate(order.createdAt)}
+            </span>
+          </div>
           <div className="flex items-center gap-2">
             <Image
               src={order.restaurant.avatarImageUrl}

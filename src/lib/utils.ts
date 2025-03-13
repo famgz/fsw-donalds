@@ -1,4 +1,5 @@
 import { type ClassValue, clsx } from 'clsx';
+import { format } from 'date-fns';
 import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
@@ -18,4 +19,8 @@ export function formatPrice(priceInCents: number) {
 
 export async function delay(intervalInMs: number = 500) {
   return new Promise((resolve) => setTimeout(resolve, intervalInMs));
+}
+
+export function formatDate(date: Date) {
+  return format(date, 'HH:mm - dd MMM yyyy');
 }

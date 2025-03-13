@@ -27,6 +27,7 @@ export async function getCompleteOrdersByCpf(
       orderProducts: { include: { product: true } },
       restaurant: true,
     },
+    orderBy: { createdAt: 'desc' },
   });
 }
 
