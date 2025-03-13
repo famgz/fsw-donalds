@@ -44,3 +44,9 @@ body {
     @apply text-foreground;
   }
 }
+
+@layer utilities {
+  .expand {
+    @apply flex flex-1 flex-col;
+  }
+}

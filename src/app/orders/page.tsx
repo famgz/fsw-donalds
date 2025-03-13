@@ -19,7 +19,7 @@ export default async function OrdersPage({ searchParams }: Props) {
 
   const orders = await getCompleteOrdersByCpf(cpf);
   return (
-    <div className="flex flex-1 flex-col gap-6 p-5">
+    <div className="expand gap-6 p-5">
       <div className="flex justify-between">
         <BackButton />
         <OrdersButton />

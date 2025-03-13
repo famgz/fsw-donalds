@@ -35,7 +35,7 @@ export default function ProductDetails({ restaurant, product }: Props) {
   }
 
   return (
-    <div className="relative -mt-4 flex flex-auto flex-col overflow-hidden rounded-t-3xl bg-white p-5 shadow-lg">
+    <div className="relative -mt-4 flex flex-auto flex-col overflow-hidden rounded-t-3xl bg-white p-5">
       <div className="flex items-center gap-1.5">
         <Image
           src={restaurant.avatarImageUrl}
@@ -59,8 +59,8 @@ export default function ProductDetails({ restaurant, product }: Props) {
           handleIncreaseQuantity={handleIncreaseQuantity}
         />
       </div>
-      <ScrollArea className="h-10 flex-auto">
-        <div className="mt-6 space-y-3">
+      <ScrollArea className="mt-6 h-10 flex-auto">
+        <div className="space-y-3">
           <h4 className="font-semibold">Sobre</h4>
           <p className="text-sm text-muted-foreground">{product.description}</p>
         </div>

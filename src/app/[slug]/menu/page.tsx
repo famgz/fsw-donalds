@@ -34,9 +34,9 @@ export default async function RestaurantMenuPage({
     return notFound();
   }
   return (
-    <div>
+    <>
       <RestaurantHeader coverImageUrl={restaurant.coverImageUrl} />
       <RestaurantCategories restaurant={restaurant} />
-    </div>
+    </>
   );
 }

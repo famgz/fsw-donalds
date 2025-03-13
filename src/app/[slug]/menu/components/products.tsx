@@ -34,7 +34,7 @@ export default function Products({ slug, products }: Props) {
               fill
               src={product.imageUrl}
               alt={product.name}
-              className="object-cover"
+              className="object-contain"
               sizes="128px"
             />
           </div>

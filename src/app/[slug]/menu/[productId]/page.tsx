@@ -27,7 +27,7 @@ export default async function ProductPage({ params }: Props) {
   }
 
   return (
-    <div className="flex flex-1 flex-col">
+    <div className="expand">
       <ProductHeader product={product} />
       <ProductDetails restaurant={restaurant} product={product} />
     </div>

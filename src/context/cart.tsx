@@ -8,24 +8,28 @@ export interface ICartContext {
   isOpen: boolean;
   products: CartProduct[];
   totalInCents: number;
+  totalItems: number;
   toggleCart: () => void;
   addProduct: (product: CartProduct) => void;
   removeProduct: (productId: string) => void;
   decreaseProductQuantity: (productId: string) => void;
   increaseProductQuantity: (productId: string) => void;
   clearCart: () => void;
+  hasProducts: boolean;
 }
 
 export const CartContext = createContext<ICartContext>({
   isOpen: false,
   products: [],
   totalInCents: 0,
+  totalItems: 0,
   toggleCart: () => {},
   addProduct: () => {},
   removeProduct: () => {},
   decreaseProductQuantity: () => {},
   increaseProductQuantity: () => {},
   clearCart: () => {},
+  hasProducts: false,
 });
 
 export function CartProvider({ children }: { children: ReactNode }) {
@@ -39,6 +43,13 @@ export function CartProvider({ children }: { children: ReactNode }) {
       ),
     [products],
   );
+
+  const totalItems = useMemo(
+    () => products.reduce((acc, product) => acc + product.quantity, 0),
+    [products],
+  );
+
+  const hasProducts = useMemo(() => products.length > 0, [products]);
 
   function toggleCart() {
     setIsOpen((prev) => !prev);
@@ -97,13 +108,15 @@ export function CartProvider({ children }: { children: ReactNode }) {
       value={{
         isOpen,
         products,
+        totalInCents,
+        totalItems,
         toggleCart,
         addProduct,
         removeProduct,
         decreaseProductQuantity,
         increaseProductQuantity,
-        totalInCents,
         clearCart,
+        hasProducts,
       }}
     >
       {children}

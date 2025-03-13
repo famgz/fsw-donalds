@@ -1,6 +1,6 @@
 import { OrderStatus } from '@prisma/client';
 
-import { orderStatusMap } from '@/app/orders/components/constants/order-status';
+import { orderStatusMap } from '@/constants/order-status';
 import { cn } from '@/lib/utils';
 
 interface Props {
