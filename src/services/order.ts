@@ -1,12 +1,14 @@
 'use server';
 
 import { ConsumptionMethod, OrderStatus } from '@prisma/client';
+import { revalidatePath } from 'next/cache';
 
 import { removeCpfPunctuation } from '@/lib/cpf';
 import { db } from '@/lib/prisma';
 import { getProductsByIds } from '@/services/product';
 import { getRestaurantBySlug } from '@/services/resturant';
 import { CartProduct } from '@/types/cart';
+import { OrderWithProductsAndRestaurant } from '@/types/order';
 
 export interface CreateOrderInput {
   cartProducts: CartProduct[];
@@ -14,6 +16,18 @@ export interface CreateOrderInput {
   customerCpf: string;
   customerName: string;
   restaurantSlug: string;
+}
+
+export async function getCompleteOrdersByCpf(
+  cpf: string,
+): Promise<OrderWithProductsAndRestaurant[]> {
+  return await db.order.findMany({
+    where: { customerCpf: removeCpfPunctuation(cpf) },
+    include: {
+      orderProducts: { include: { product: true } },
+      restaurant: true,
+    },
+  });
 }
 
 export async function createOrder({
@@ -59,4 +73,5 @@ export async function createOrder({
       totalInCents,
     },
   });
+  revalidatePath('/orders');
 }

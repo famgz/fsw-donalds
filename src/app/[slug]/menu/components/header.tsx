@@ -11,14 +11,16 @@ interface Props {
 
 export default function RestaurantHeader({ coverImageUrl }: Props) {
   return (
-    <div className="relative flex h-[250px] w-full justify-between p-3">
-      <BackButton />
-      <OrdersButton />
+    <div className="relative h-[250px] w-full">
+      <div className="relative z-50 flex justify-between p-3">
+        <BackButton />
+        <OrdersButton />
+      </div>
       <Image
         src={coverImageUrl}
         alt="Imagem restaurante"
         fill
-        className="absolute -z-10 object-cover"
+        className="absolute object-cover"
       />
     </div>
   );

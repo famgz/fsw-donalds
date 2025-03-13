@@ -28,8 +28,10 @@ export default function RootLayout({
         <CartProvider>
           <Toaster />
           <Cart />
-          <div className="mx-auto flex min-h-screen max-w-md flex-col">
-            {children}
+          <div className="bg-muted-foreground/10">
+            <div className="mx-auto flex min-h-screen max-w-md flex-col bg-background">
+              {children}
+            </div>
           </div>
         </CartProvider>
       </body>
