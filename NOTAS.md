@@ -64,6 +64,8 @@ https://www.youtube.com/watch?v=o6ziU63mDyw
 
 `npx shadcn@latest add input`
 
+`npx shadcn@latest add sonner`
+
 
 ## ESlint
 

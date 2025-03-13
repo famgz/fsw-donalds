@@ -15,3 +15,7 @@ export function formatPrice(priceInCents: number) {
     currency: 'BRL',
   }).format(fromCentsToReal(priceInCents));
 }
+
+export async function delay(intervalInMs: number = 500) {
+  return new Promise((resolve) => setTimeout(resolve, intervalInMs));
+}

@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation';
 
 import ProductHeader from '@/app/[slug]/menu/[productId]/components/header';
 import ProductDetails from '@/app/[slug]/menu/[productId]/components/product.details';
-import { getProduct } from '@/services/product';
+import { getProductById } from '@/services/product';
 import { getRestaurantBySlug } from '@/services/resturant';
 
 interface Props {
@@ -16,7 +16,7 @@ export default async function ProductPage({ params }: Props) {
     return notFound();
   }
   const [product, restaurant] = await Promise.all([
-    getProduct(productId),
+    getProductById(productId),
     getRestaurantBySlug(slug),
   ]);
   if (!(product && restaurant)) {

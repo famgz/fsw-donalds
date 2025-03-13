@@ -1,6 +1,7 @@
 import { Product } from '@prisma/client';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 
 import { formatPrice } from '@/lib/utils';
 
@@ -10,11 +11,12 @@ interface Props {
 }
 
 export default function Products({ slug, products }: Props) {
+  const searchParams = useSearchParams();
   return (
     <div className="divide-y px-5 py-3">
       {products.map((product) => (
         <Link
-          href={`/${slug}/menu/${product.id}`}
+          href={`/${slug}/menu/${product.id}?${searchParams.toString()}`}
           key={product.id}
           className="flex items-center justify-between gap-4 py-4"
         >

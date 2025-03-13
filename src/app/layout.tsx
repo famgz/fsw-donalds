@@ -2,6 +2,7 @@ import './globals.css';
 
 import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
+import { Toaster } from 'sonner';
 
 import Cart from '@/components/cart';
 import { CartProvider } from '@/context/cart';
@@ -25,6 +26,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${font.className} antialiased`}>
         <CartProvider>
+          <Toaster />
           <Cart />
           <div className="mx-auto flex min-h-screen max-w-md flex-col">
             {children}
