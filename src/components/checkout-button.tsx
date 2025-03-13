@@ -29,7 +29,7 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { CartContext } from '@/context/cart';
-import { isValidCpf } from '@/lib/cpf';
+import { isValidCpf, removeCpfPunctuation } from '@/lib/cpf';
 import { delay } from '@/lib/utils';
 import { createOrder } from '@/services/order';
 
@@ -78,7 +78,7 @@ export default function CheckoutButton() {
         setOpen(false);
         clearCart();
         toast.success('Pedido finalizado com sucesso!');
-        router.push('/orders');
+        router.push(`/orders?cpf=${removeCpfPunctuation(data.cpf)}`);
       });
     } catch (e) {
       console.error(e);
