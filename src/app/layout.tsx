@@ -8,8 +8,8 @@ import Cart from '@/components/cart';
 import { CartProvider } from '@/context/cart';
 
 export const metadata: Metadata = {
-  title: 'FSW Donalds',
-  description: 'Fast Food App',
+  title: 'Tasty Hub',
+  description: 'Tasty Food App',
 };
 
 const font = Poppins({
