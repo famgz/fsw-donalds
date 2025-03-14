@@ -22,7 +22,7 @@ export default function Cart() {
 
   return (
     <Sheet open={isOpen} onOpenChange={toggleCart}>
-      <SheetContent className="flex w-[90%] flex-col gap-5">
+      <SheetContent className="flex w-[80%] flex-col gap-5">
         <SheetHeader>
           <SheetTitle className="text-left">Carrinho</SheetTitle>
           <SheetDescription className="sr-only">
