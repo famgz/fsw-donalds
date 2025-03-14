@@ -7,6 +7,10 @@ export async function getRestaurantBySlug(slug: string) {
   return await db.restaurant.findUnique({ where: { slug } });
 }
 
+export async function getAllRestaurants() {
+  return await db.restaurant.findMany();
+}
+
 export async function getRestaurantBySlugWithMenuCategoriesAndProducts(
   slug: string,
 ): Promise<RestaurantWithCategoriesAndProducts | null> {
