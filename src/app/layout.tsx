@@ -29,7 +29,7 @@ export default function RootLayout({
           <Toaster />
           <Cart />
           <div className="expand min-h-screen bg-muted-foreground/10">
-            <div className="expand mx-auto h-full max-w-lg overflow-hidden bg-background">
+            <div className="expand mx-auto h-full w-full max-w-lg overflow-hidden bg-background">
               {children}
             </div>
           </div>

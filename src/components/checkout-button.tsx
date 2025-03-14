@@ -91,7 +91,7 @@ export default function CheckoutButton() {
         <Button className="w-full rounded-full">Finalizar Pedido</Button>
       </DrawerTrigger>
       <DrawerContent>
-        <div className="mx-auto w-full max-w-md">
+        <div className="mx-auto w-full max-w-lg">
           <DrawerHeader>
             <DrawerTitle>Finalizar Pedido</DrawerTitle>
             <DrawerDescription>

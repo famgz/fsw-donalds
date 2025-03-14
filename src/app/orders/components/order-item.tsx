@@ -30,20 +30,28 @@ export default function OrderItem({ order }: Props) {
             <p>{order.restaurant.name}</p>
           </div>
         </CardTitle>
-        <CardContent className="space-y-3 p-0 text-sm">
-          <div className="space-y-4 border-y py-3">
-            {order.orderProducts.map((orderProduct) => (
-              <div key={orderProduct.id} className="flex items-center gap-2">
-                <div className="flex size-5 items-center justify-center rounded-full bg-muted-foreground text-xs text-white">
-                  {orderProduct.quantity}
-                </div>
-                <span>{orderProduct.product.name}</span>
-              </div>
-            ))}
-          </div>
-          <p>{formatPrice(order.totalInCents)}</p>
-        </CardContent>
       </CardHeader>
+      <CardContent className="space-y-3 p-6 pt-0 text-sm">
+        <div className="space-y-2 border-y py-3">
+          {order.orderProducts.map((orderProduct) => (
+            <div
+              key={orderProduct.id}
+              className="flex items-center gap-2 text-xs"
+            >
+              <div className="flex size-5 items-center justify-center rounded-full bg-muted-foreground/60 text-[10px] font-medium text-white">
+                {orderProduct.quantity}
+              </div>
+              <span className="line-clamp-1 flex-1">
+                {orderProduct.product.name}
+              </span>
+              <span className="">
+                {formatPrice(orderProduct.quantity * orderProduct.priceInCents)}
+              </span>
+            </div>
+          ))}
+        </div>
+        <p className="font-medium">{formatPrice(order.totalInCents)}</p>
+      </CardContent>
     </Card>
   );
 }

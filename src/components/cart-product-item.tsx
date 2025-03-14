@@ -35,7 +35,7 @@ export default function CartProductItem({ product }: Props) {
         />
       </div>
       <div className="flex-auto space-y-1 text-xs sm:text-sm">
-        <p className="truncate">{product.name}</p>
+        <p className="line-clamp-1">{product.name}</p>
         <p className="font-semibold">{formatPrice(product.priceInCents)}</p>
         <ProductQuantityControls
           quantity={product.quantity}
@@ -43,7 +43,7 @@ export default function CartProductItem({ product }: Props) {
           handleIncreaseQuantity={handleIncreaseQuantity}
         />
       </div>
-      <RemoveCartProductButton productId={product.id}/>
+      <RemoveCartProductButton productId={product.id} />
     </div>
   );
 }

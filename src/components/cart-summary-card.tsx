@@ -16,7 +16,7 @@ export default function CartSummaryCard() {
           height: CART_SUMMARY_CARD_HEIGHT,
         }}
       >
-        <div className="mx-auto flex w-full max-w-md items-center justify-between gap-4 p-4">
+        <div className="mx-auto flex h-full w-full max-w-lg items-center justify-between gap-4 p-4">
           <div className="text-sm text-muted-foreground">
             <p className="">Total dos pedidos</p>
             <p>

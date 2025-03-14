@@ -58,7 +58,7 @@ export default function CpfForm() {
   async function onSubmit(data: FormSchema) {
     try {
       startTransition(async () => {
-        router.push(`${pathname}?cpf=${removeCpfPunctuation(data.cpf)}`);
+        router.replace(`${pathname}?cpf=${removeCpfPunctuation(data.cpf)}`);
       });
     } catch (e) {
       console.error(e);
@@ -68,56 +68,58 @@ export default function CpfForm() {
   return (
     <Drawer open>
       <DrawerContent>
-        <DrawerHeader>
-          <DrawerTitle>Pedidos por CPF</DrawerTitle>
-          <DrawerDescription>
-            Digite seu CPF abaixo para visualizar os pedidos.
-          </DrawerDescription>
-        </DrawerHeader>
-        <Form {...form}>
-          <form
-            onSubmit={form.handleSubmit(onSubmit)}
-            className="space-y-5 p-4"
-          >
-            <FormField
-              control={form.control}
-              name="cpf"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>CPF</FormLabel>
-                  <FormControl>
-                    <PatternFormat
-                      placeholder="Digite seu cpf..."
-                      format="###.###.###-##"
-                      customInput={Input}
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <Button
-              type="submit"
-              className="w-full gap-2 rounded-full"
-              disabled={isPending}
+        <div className="mx-auto w-full max-w-lg">
+          <DrawerHeader>
+            <DrawerTitle>Pedidos por CPF</DrawerTitle>
+            <DrawerDescription>
+              Digite seu CPF abaixo para visualizar os pedidos.
+            </DrawerDescription>
+          </DrawerHeader>
+          <Form {...form}>
+            <form
+              onSubmit={form.handleSubmit(onSubmit)}
+              className="space-y-5 p-4"
             >
-              Confirmar
-              {isPending && <Loader2Icon className="animate-spin" />}
-            </Button>
-          </form>
-        </Form>
-        <DrawerFooter className="pt-0">
-          <DrawerClose asChild>
-            <Button
-              variant="outline"
-              className="rounded-full"
-              onClick={handleCancel}
-            >
-              Cancelar
-            </Button>
-          </DrawerClose>
-        </DrawerFooter>
+              <FormField
+                control={form.control}
+                name="cpf"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>CPF</FormLabel>
+                    <FormControl>
+                      <PatternFormat
+                        placeholder="Digite seu cpf..."
+                        format="###.###.###-##"
+                        customInput={Input}
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <Button
+                type="submit"
+                className="w-full gap-2 rounded-full"
+                disabled={isPending}
+              >
+                Confirmar
+                {isPending && <Loader2Icon className="animate-spin" />}
+              </Button>
+            </form>
+          </Form>
+          <DrawerFooter className="pt-0">
+            <DrawerClose asChild>
+              <Button
+                variant="outline"
+                className="rounded-full"
+                onClick={handleCancel}
+              >
+                Cancelar
+              </Button>
+            </DrawerClose>
+          </DrawerFooter>
+        </div>
       </DrawerContent>
     </Drawer>
   );
